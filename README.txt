@@ -1,9 +1,9 @@
 ====================================
-Homepage.html - Homepage
+index.html - Homepage
 Sources.html - sources
 Antarctica.html - Evidence of Climate change in Antarctica
 Droughts.html - Evidence of Climate change (Droughts)
-contactus.html - contact us
+How to help.html - How to help
 ====================================
 
 When using the website, you need to replace
