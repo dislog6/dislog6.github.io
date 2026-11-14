@@ -143,8 +143,8 @@ section.block { padding-block: 5rem 1.5rem; }
 .game:hover { border-color: var(--gold); box-shadow: 0 26px 60px -24px rgba(247, 198, 74, .35); }
 .game.tilting { transition: border-color .3s, box-shadow .3s; }
 .game .shot { position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: #08071a; }
-.game .shot img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s cubic-bezier(.2, .8, .3, 1); }
-.game:hover .shot img { transform: scale(1.06); }
+.game .shot img, .game .shot video { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .6s cubic-bezier(.2, .8, .3, 1); }
+.game:hover .shot img, .game:hover .shot video { transform: scale(1.06); }
 .game .glare { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(circle at var(--gx) var(--gy), rgba(255, 255, 255, .28), transparent 55%); opacity: 0; transition: opacity .3s; mix-blend-mode: soft-light; }
 .game:hover .glare { opacity: 1; }
 .badge { position: absolute; top: .8rem; left: .8rem; display: inline-flex; align-items: center; gap: .4rem; font-size: .78rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--ink);
@@ -339,15 +339,15 @@ footer .wrap a:hover { color: var(--gold); }
           </div>
         </article>
         <article class="game pop dev">
-          <div class="shot"><img src="img/pinata.jpg" alt="Pi&ntilde;ata Clicker RNG cover art" loading="lazy" width="960" height="540"><span class="badge" style="--b: #ff7bd5">Under development</span><div class="glare"></div></div>
+          <div class="shot"><video src="img/pinata-trailer.mp4" poster="img/pinata.jpg" autoplay muted loop playsinline width="960" height="540" aria-label="Pi&ntilde;ata Clicker RNG trailer: the pi&ntilde;ata bursts into candy and drops a bat with its real odds"></video><span class="badge" style="--b: #ff7bd5">Under development</span><div class="glare"></div></div>
           <div class="body">
             <h3>Pi&ntilde;ata Clicker RNG</h3>
             <p>Whack the pi&ntilde;ata. It swings, dents, tears and bursts in a fountain of candy, and every burst drops a bat with its real odds. Party your way from a Backyard Party to the Rainbow Kingdom.</p>
             <ul class="track">
               <li class="done">Game built: ten parties, 81 bats and a Daily Pi&ntilde;ata</li>
               <li class="done">Cover art painted</li>
-              <li class="now">Store videos and upload</li>
-              <li>Launch on CrazyGames</li>
+              <li class="done">Trailer made</li>
+              <li class="now">Launching on CrazyGames</li>
             </ul>
             <span class="btn soon" aria-disabled="true">Coming soon</span>
           </div>
@@ -412,6 +412,8 @@ footer .wrap a:hover { color: var(--gold); }
 <script>
 (() => {
   const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // trailers hold on their cover for anyone who asked for less motion
+  if (calm) document.querySelectorAll('video[autoplay]').forEach(v => { v.removeAttribute('autoplay'); v.pause(); });
 
   // ---------- the rarities, with the games' own drop weights ----------
   const R = [
