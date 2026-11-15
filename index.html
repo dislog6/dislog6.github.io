@@ -320,7 +320,7 @@ footer .wrap a:hover { color: var(--gold); }
       </div>
       <div class="games">
         <article class="game pop">
-          <div class="shot"><video src="img/timber-trailer.mp4" poster="img/timber.jpg" autoplay muted loop playsinline width="960" height="540" aria-label="Timber Clicker RNG trailer: an axe chops the tree down and drops an axe with its real odds"></video><span class="badge live">Full Launch</span><div class="glare"></div></div>
+          <div class="shot"><video src="img/timber-trailer.mp4" poster="img/timber.jpg" muted loop playsinline preload="none" width="960" height="540" aria-label="Timber Clicker RNG trailer: an axe chops the tree down and drops an axe with its real odds"></video><span class="badge live">Full Launch</span><div class="glare"></div></div>
           <div class="body">
             <h3>Timber Clicker RNG</h3>
             <p>Chop down trees and win axes with real drop odds. Explore ten forests and fell your way to the Celestial Grove.</p>
@@ -329,7 +329,7 @@ footer .wrap a:hover { color: var(--gold); }
           </div>
         </article>
         <article class="game pop">
-          <div class="shot"><video src="img/mine-trailer.mp4" poster="img/mine.jpg" autoplay muted loop playsinline width="960" height="540" aria-label="Mine Clicker RNG gameplay: pickaxes break rocks and drop tools with their real odds"></video><span class="badge live">Full Launch</span><div class="glare"></div></div>
+          <div class="shot"><video src="img/mine-trailer.mp4" poster="img/mine.jpg" muted loop playsinline preload="none" width="960" height="540" aria-label="Mine Clicker RNG gameplay: pickaxes break rocks and drop tools with their real odds"></video><span class="badge live">Full Launch</span><div class="glare"></div></div>
           <div class="body">
             <h3>Mine Clicker RNG</h3>
             <p>Crack open rocks and collect random pickaxes. Every tool you find makes your next swing hit harder. Dig ten layers down to the Celestial Throne.</p>
@@ -338,7 +338,7 @@ footer .wrap a:hover { color: var(--gold); }
           </div>
         </article>
         <article class="game pop">
-          <div class="shot"><video src="img/pinata-trailer.mp4" poster="img/pinata.jpg" autoplay muted loop playsinline width="960" height="540" aria-label="Pi&ntilde;ata Clicker RNG trailer: the pi&ntilde;ata bursts into candy and drops a bat with its real odds"></video><span class="badge live" style="--b: #ff7bd5">Basic Launch</span><div class="glare"></div></div>
+          <div class="shot"><video src="img/pinata-trailer.mp4" poster="img/pinata.jpg" muted loop playsinline preload="none" width="960" height="540" aria-label="Pi&ntilde;ata Clicker RNG trailer: the pi&ntilde;ata bursts into candy and drops a bat with its real odds"></video><span class="badge live" style="--b: #ff7bd5">Basic Launch</span><div class="glare"></div></div>
           <div class="body">
             <h3>Pi&ntilde;ata Clicker RNG</h3>
             <p>Whack the pi&ntilde;ata. It swings, tears and bursts in a fountain of candy, and every burst drops a bat with its real odds. Party your way from a Backyard Party to the Rainbow Kingdom.</p>
@@ -353,7 +353,8 @@ footer .wrap a:hover { color: var(--gold); }
             <p>Sweep a pin through a sky full of balloons. Same-colour neighbours burst in chains, golden balloons show their real odds, and every run feeds a big skill tree. Pop your way from the Backyard to the Stratosphere.</p>
             <ul class="track">
               <li class="done">Playable prototype: pin, chains and a skill tree</li>
-              <li class="now">Building eight skies and a 60-node tree</li>
+              <li class="done">Eight skies, blimps and a 60-node tree</li>
+              <li class="now">Final art and sound</li>
               <li>Cover art and trailer</li>
               <li>Launching on CrazyGames</li>
             </ul>
@@ -420,8 +421,14 @@ footer .wrap a:hover { color: var(--gold); }
 <script>
 (() => {
   const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  // trailers hold on their cover for anyone who asked for less motion
-  if (calm) document.querySelectorAll('video[autoplay]').forEach(v => { v.removeAttribute('autoplay'); v.pause(); });
+  // trailers rest on their cover and play only while the mouse is over the card (on a touch screen, a tap plays or pauses)
+  document.querySelectorAll('.game video').forEach(v => {
+    const card = v.closest('.game');
+    const play = () => { const p = v.play(); if (p && p.catch) p.catch(() => {}); };
+    card.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse') play(); });
+    card.addEventListener('pointerleave', e => { if (e.pointerType === 'mouse') { v.pause(); v.load(); } });
+    v.addEventListener('click', () => (v.paused ? play() : v.pause()));
+  });
 
   // ---------- the rarities, with the games' own drop weights ----------
   const R = [
