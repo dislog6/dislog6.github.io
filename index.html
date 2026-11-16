@@ -12,7 +12,7 @@
 <meta property="og:url" content="https://dislog6.github.io/">
 <meta name="twitter:card" content="summary_large_image">
 <title>ROC Studio</title>
-<meta name="description" content="ROC Studio makes free RNG clicker games for CrazyGames: Mine Clicker RNG, Timber Clicker RNG and Pi&ntilde;ata Clicker RNG.">
+<meta name="description" content="ROC Studio makes free RNG clicker games for CrazyGames: Mine Clicker RNG, Timber Clicker RNG and Pi&ntilde;ata Clicker RNG, and coming soon, Lucky Block Clicker RNG.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Fredoka:wght@400;500;600;700&family=Space+Mono:wght@700&display=swap">
@@ -135,8 +135,7 @@ section.block { padding-block: 5rem 1.5rem; }
 .head p { margin: 0; color: var(--haze); max-width: 42ch; }
 
 /* the games: cartridges that tilt toward the pointer */
-.games { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; perspective: 1100px; }
-@media (max-width: 980px) { .games { grid-template-columns: repeat(2, 1fr); } }
+.games { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; perspective: 1100px; }
 @media (max-width: 640px) { .games { grid-template-columns: 1fr; } }
 .game { --rx: 0deg; --ry: 0deg; --gx: 50%; --gy: 0%; position: relative; display: flex; flex-direction: column; min-width: 0; background: var(--night-2); border: 2px solid var(--night-3); border-radius: 22px; overflow: hidden;
   transform: rotateX(var(--rx)) rotateY(var(--ry)); transform-style: preserve-3d; transition: transform .35s cubic-bezier(.2, .8, .3, 1), border-color .3s, box-shadow .3s; }
@@ -285,7 +284,7 @@ footer .wrap a:hover { color: var(--gold); }
           <div class="roc" aria-hidden="true"><span>R</span><span>O</span><span>C</span></div>
           <div class="studio" aria-hidden="true">STUDIO</div>
         </div>
-        <p class="lede">Free browser games where every find shows its <b>real odds</b>. Three live on CrazyGames, more in the oven.</p>
+        <p class="lede">Free browser games where every find shows its <b>real odds</b>. Three live on CrazyGames, one more in the oven.</p>
         <div class="cta-row">
           <a class="btn" href="#games"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>Play the games</a>
           <a class="btn yt" href="https://www.youtube.com/@ROCStudio" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12 31 31 0 0 0 1 16.8a3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8zM9.8 15.1V8.9l5.8 3.1z"/></svg>@ROCStudio</a>
@@ -317,7 +316,7 @@ footer .wrap a:hover { color: var(--gold); }
     <div class="wrap">
       <div class="head">
         <div><span class="eyebrow">On CrazyGames</span><h2>The games</h2></div>
-        <p>Tap the big thing, watch what drops, and build a collection that hits harder every swing. Three to play now. All free, in the browser, on desktop and phone.</p>
+        <p>Tap the big thing, watch what drops, and build a collection that hits harder every swing. Three to play now, one on the way. All free, in the browser, on desktop and phone.</p>
       </div>
       <div class="games">
         <article class="game pop">
@@ -345,6 +344,21 @@ footer .wrap a:hover { color: var(--gold); }
             <p>Whack the pi&ntilde;ata. It swings, tears and bursts in a fountain of candy, and every burst drops a bat with its real odds. Party your way from a Backyard Party to the Rainbow Kingdom.</p>
             <div class="top-drop"><span>The Grand Finale</span><b>1 in 1,000,000</b></div>
             <a class="btn" href="https://www.crazygames.com/game/pinata-clicker-rng" target="_blank" rel="noopener">Play free</a>
+          </div>
+        </article>
+        <article class="game pop dev">
+          <div class="shot"><img src="img/luckyblock.jpg" alt="Lucky Block Clicker RNG: a giant golden question-mark block in a sunny meadow under a starry dusk sky" loading="lazy" width="960" height="540"><span class="badge" style="--b: #ff7bd5">Under development</span><div class="glare"></div></div>
+          <div class="body">
+            <h3>Lucky Block Clicker RNG</h3>
+            <p>Tap the giant golden block. It cracks, bursts open in a beam of light, and the Lucky Roll spins to show what was inside: a sword with its real odds, or a bonus like Block Rain. Open your way from the Sunny Meadow to the Cosmic Void.</p>
+            <ul class="track">
+              <li class="done">The block, the Lucky Roll and the sword rack</li>
+              <li class="done">First three worlds, Winter Wonderland included</li>
+              <li class="now">All ten worlds, events and balance</li>
+              <li>Cover art and trailer</li>
+              <li>Launching on CrazyGames</li>
+            </ul>
+            <span class="btn soon" aria-disabled="true">Coming soon</span>
           </div>
         </article>
       </div>
